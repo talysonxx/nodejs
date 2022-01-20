@@ -1,3 +1,7 @@
+// modules imports
+let calc = require('./modules/calc')
+let toCheck = require('./modules/validator')
+
 let args = process.argv
 let spawn = start(args)
 
@@ -10,39 +14,40 @@ function start(args) {
   let [valueA, valueB] = arguments.slice(1)
 
   switch (arguments[0]) {
-    case 'ad':
-      return additionFunc(Number(valueA), Number(valueB))
+    case 'sum':
+      return calc.sumFunc(Number(valueA), Number(valueB))
     case 'sub':
-      return subtractionFunc(Number(valueA), Number(valueB))
+      return calc.subtractionFunc(Number(valueA), Number(valueB))
       case 'mult':
-        return multiplicationFunc(Number(valueA), Number(valueB))
+        return calc.multiplicationFunc(Number(valueA), Number(valueB))
     case 'div':
-      return divisionFunc(Number(valueA), Number(valueB))
+      return calc.divisionFunc(Number(valueA), Number(valueB))
 
     default:
-      return 'Argumento(s) inválido(s). Primeiro item deve ser ad, sub, div ou mult. Os outros 2 serão números.'
+      return 'Argumento(s) inválido(s). Primeiro item deve ser sum, sub, div ou mult. Os outros 2 serão números.'
   }
 }
-
-function toCheck(arguments) {
-  // não pode estar vazio. o primeiro tem que ser uma letra e os dois últimos obrigatoriamente um número
-  if (arguments == '' || !isNaN(arguments[0]) || isNaN(arguments[1]) || isNaN(arguments[2])) return true
-}
-
-function additionFunc(a, b) {
-  return `Soma: ${a + b}`
-}
-function subtractionFunc(a, b) {
-  return `Subtração por a - b: ${a - b} e b - a: ${b - a}`
-}
-function multiplicationFunc(a, b) {
-  return `Multiplição: ${a * b}`
-}
-function divisionFunc(a, b) {
-  return `Divisão por a / b: ${a / b} e b / a: ${b / a}`
-}
-
 console.log(spawn)
+
+// function toCheck(arguments) {
+//   // não pode estar vazio. o primeiro tem que ser uma letra e os dois últimos obrigatoriamente um número
+//   if (arguments == '' || !isNaN(arguments[0]) || isNaN(arguments[1]) || isNaN(arguments[2])) return true
+// }
+
+// function sumFunc(a, b) {
+//   return `Soma: ${a + b}`
+// }
+// function subtractionFunc(a, b) {
+//   return `Subtração por a - b: ${a - b} e b - a: ${b - a}`
+// }
+// function multiplicationFunc(a, b) {
+//   return `Multiplição: ${a * b}`
+// }
+// function divisionFunc(a, b) {
+//   return `Divisão por a / b: ${a / b} e b / a: ${b / a}`
+// }
+
+
 
 
 
